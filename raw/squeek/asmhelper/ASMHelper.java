@@ -419,7 +419,7 @@ public class ASMHelper
 	}
 
 	/**
-	 * @return The method of the class that has both a matching {@code methodName} and {@code methodDesc}.
+	 * @return The method of the class that has both a matching {@code srgMethodName} (or non-Minecraft method name) and {@code methodDesc}.
 	 * If no matching method is found, returns {@code null}.
 	 */
 	public static MethodNode findMethodNodeOfClass(ClassNode classNode, String methodName, String methodDesc)
@@ -427,22 +427,6 @@ public class ASMHelper
 		for (MethodNode method : classNode.methods)
 		{
 			if (method.name.equals(methodName) && (methodDesc == null || method.desc.equals(methodDesc)))
-			{
-				return method;
-			}
-		}
-		return null;
-	}
-
-	/**
-	 * @return The method of the class that has a matching {@code srgMethodName} or {@code mcpMethodName} and a matching {@code methodDesc}.
-	 * If no matching method is found, returns {@code null}.
-	 */
-	public static MethodNode findMethodNodeOfClass(ClassNode classNode, String srgMethodName, String mcpMethodName, String methodDesc)
-	{
-		for (MethodNode method : classNode.methods)
-		{
-			if ((method.name.equals(srgMethodName) || method.name.equals(mcpMethodName)) && (methodDesc == null || method.desc.equals(methodDesc)))
 			{
 				return method;
 			}
